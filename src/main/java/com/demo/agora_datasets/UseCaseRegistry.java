@@ -10,8 +10,6 @@ public class UseCaseRegistry implements java.io.Serializable {
 
 	private java.lang.String name;
 	private java.lang.Integer criticality;
-	private java.lang.Boolean autoApprove;
-
 	public UseCaseRegistry() {
 	}
 
@@ -31,19 +29,9 @@ public class UseCaseRegistry implements java.io.Serializable {
 		this.criticality = criticality;
 	}
 
-	public java.lang.Boolean getAutoApprove() {
-		return this.autoApprove;
-	}
-
-	public void setAutoApprove(java.lang.Boolean autoApprove) {
-		this.autoApprove = autoApprove;
-	}
-
-	public UseCaseRegistry(java.lang.String name,
-			java.lang.Integer criticality, java.lang.Boolean autoApprove) {
+	public UseCaseRegistry(java.lang.String name, java.lang.Integer criticality) {
 		this.name = name;
 		this.criticality = criticality;
-		this.autoApprove = autoApprove;
 	}
 
 }
