@@ -8,7 +8,7 @@ when
   not(UseCaseRegistry( ))
   $dsr: DatasetAccessRequest( )
 then
-  log("No Use Case Registry found, this can't be auto-approved");
+  log(drools, "No Use Case Registry found, this can't be auto-approved");
   $dsr.setApproved(false);
 end
 
@@ -18,7 +18,7 @@ when
   UseCaseRegistry( criticality >= 60 )
   $dsr: DatasetAccessRequest( )
 then
-  log("Risky registry found, with criticality higher/equal than 60, this can't be auto-approved");
+  log(drools, "Risky registry found, with criticality higher/equal than 60, this can't be auto-approved");
   $dsr.setApproved(false);
 end
 
@@ -28,6 +28,6 @@ when
   UseCaseRegistry( criticality < 60 )
   $dsr: DatasetAccessRequest( )
 then
-  log("Risky registry found, with criticality lower than 60, this is being auto-approved");
+  log(drools, "Risky registry found, with criticality lower than 60, this is being auto-approved");
   $dsr.setApproved(true);
 end
