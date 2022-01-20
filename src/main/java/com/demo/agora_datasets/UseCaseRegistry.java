@@ -6,12 +6,44 @@ package com.demo.agora_datasets;
 
 public class UseCaseRegistry implements java.io.Serializable {
 
-    static final long serialVersionUID = 1L;
+	static final long serialVersionUID = 1L;
 
-    public UseCaseRegistry() {
-    }
+	private java.lang.String name;
+	private java.lang.Integer criticality;
+	private java.lang.Boolean autoApprove;
 
+	public UseCaseRegistry() {
+	}
 
+	public java.lang.String getName() {
+		return this.name;
+	}
 
+	public void setName(java.lang.String name) {
+		this.name = name;
+	}
+
+	public java.lang.Integer getCriticality() {
+		return this.criticality;
+	}
+
+	public void setCriticality(java.lang.Integer criticality) {
+		this.criticality = criticality;
+	}
+
+	public java.lang.Boolean getAutoApprove() {
+		return this.autoApprove;
+	}
+
+	public void setAutoApprove(java.lang.Boolean autoApprove) {
+		this.autoApprove = autoApprove;
+	}
+
+	public UseCaseRegistry(java.lang.String name,
+			java.lang.Integer criticality, java.lang.Boolean autoApprove) {
+		this.name = name;
+		this.criticality = criticality;
+		this.autoApprove = autoApprove;
+	}
 
 }
