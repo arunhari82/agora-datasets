@@ -1,10 +1,31 @@
 package com.demo.agora_datasets;
 
 rule "No Registry use case"
+ruleflow-group "auto-approve"
 when 
   not(UseCaseRegistry( ))
   $dsr: DatasetAccessRequest( )
 then
   log("No Use Case Registry found, this can't be auto-approved");
   $dsr.setApproved(false);
+end
+
+rule "Risky Registry"
+ruleflow-group "auto-approve"
+when 
+  UseCaseRegistry( criticality >= 60 )
+  $dsr: DatasetAccessRequest( )
+then
+  log("Risky registry found, with criticality higher/equal than 60, this can't be auto-approved");
+  $dsr.setApproved(false);
+end
+
+rule "Risky Registry"
+ruleflow-group "auto-approve"
+when 
+  UseCaseRegistry( criticality < 60 )
+  $dsr: DatasetAccessRequest( )
+then
+  log("Risky registry found, with criticality lower than 60, this is being auto-approved");
+  $dsr.setApproved(true);
 end
