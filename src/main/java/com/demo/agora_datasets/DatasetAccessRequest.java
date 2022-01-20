@@ -6,12 +6,36 @@ package com.demo.agora_datasets;
 
 public class DatasetAccessRequest implements java.io.Serializable {
 
-    static final long serialVersionUID = 1L;
+	static final long serialVersionUID = 1L;
 
-    public DatasetAccessRequest() {
-    }
+	@org.kie.api.definition.type.Label(value = "Dataset Name")
+	private java.lang.String datasetName;
+	@org.kie.api.definition.type.Label(value = "User Id")
+	private java.lang.String userId;
 
+	public DatasetAccessRequest() {
+	}
 
+	public java.lang.String getDatasetName() {
+		return this.datasetName;
+	}
 
+	public void setDatasetName(java.lang.String datasetName) {
+		this.datasetName = datasetName;
+	}
+
+	public java.lang.String getUserId() {
+		return this.userId;
+	}
+
+	public void setUserId(java.lang.String userId) {
+		this.userId = userId;
+	}
+
+	public DatasetAccessRequest(java.lang.String datasetName,
+			java.lang.String userId) {
+		this.datasetName = datasetName;
+		this.userId = userId;
+	}
 
 }
