@@ -22,7 +22,7 @@ then
   $dsr.setApproved(false);
 end
 
-rule "Risky Registry"
+rule "Safe Registry"
 ruleflow-group "auto-approve"
 when 
   UseCaseRegistry( criticality < 60 )
