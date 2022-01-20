@@ -20,7 +20,7 @@ public class EmailWorkitemHandler implements WorkItemHandler {
     String message = "  ===========   MOCK EMAIL START (to be sent by system)  =============\n";
     message += "To: " + to + "\n";
     message += "Subject: " + subject + "\n";
-    message += "Message content" + body + "\n";
+    message += "Message: " + body + "\n";
     message += "  =========== //  MOCK EMAIL END ====================\n";
 
     logger.info(message);
