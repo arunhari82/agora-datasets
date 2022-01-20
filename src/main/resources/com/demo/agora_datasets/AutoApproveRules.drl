@@ -1,5 +1,7 @@
 package com.demo.agora_datasets;
 
+import function com.demo.agora_datasets.RuleFunctions.log;
+
 rule "No Registry use case"
 ruleflow-group "auto-approve"
 when 
