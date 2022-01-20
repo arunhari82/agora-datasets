@@ -8,10 +8,12 @@ public class DatasetAccessRequest implements java.io.Serializable {
 
 	static final long serialVersionUID = 1L;
 
-	@org.kie.api.definition.type.Label(value = "Dataset Name")
+	@org.kie.api.definition.type.Label("Dataset Name")
 	private java.lang.String datasetName;
-	@org.kie.api.definition.type.Label(value = "User Id")
+	@org.kie.api.definition.type.Label("User Id")
 	private java.lang.String userId;
+
+	private java.lang.Boolean approved;
 
 	public DatasetAccessRequest() {
 	}
@@ -32,10 +34,19 @@ public class DatasetAccessRequest implements java.io.Serializable {
 		this.userId = userId;
 	}
 
+	public java.lang.Boolean getApproved() {
+		return this.approved;
+	}
+
+	public void setApproved(java.lang.Boolean approved) {
+		this.approved = approved;
+	}
+
 	public DatasetAccessRequest(java.lang.String datasetName,
-			java.lang.String userId) {
+			java.lang.String userId, java.lang.Boolean approved) {
 		this.datasetName = datasetName;
 		this.userId = userId;
+		this.approved = approved;
 	}
 
 }
