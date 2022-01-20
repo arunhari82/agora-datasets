@@ -45,6 +45,12 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-test</artifactId>
+      <version>7.52.0.Final-redhat-00008</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>com.thoughtworks.xstream</groupId>
       <artifactId>xstream</artifactId>
       <version>1.4.16.redhat-00001</version>
