@@ -33,6 +33,7 @@ public class RestWorkitemHandler implements WorkItemHandler {
       if (probability > 70 || isRiskyClearance || isRiskyEShare) {
         results.put("modelRegistryUseCaseId", UUID.randomUUID().toString());
       } else {
+        logger.info("Adding RISKY DATASET, because probability {}, clearance risky {}, and eShare risky {}", probability, isRiskyClearance, isRiskyEShare);
         results.put("modelRegistryUseCaseId", "RISK_" + UUID.randomUUID().toString());
       }
     } else {
