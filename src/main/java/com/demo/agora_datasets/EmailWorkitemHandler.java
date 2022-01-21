@@ -1,6 +1,9 @@
 package com.demo.agora_datasets;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.kie.api.runtime.process.WorkItem;
 import org.kie.api.runtime.process.WorkItemHandler;
@@ -16,6 +19,7 @@ public class EmailWorkitemHandler implements WorkItemHandler {
     String to = (String) workItem.getParameter("To");
     String subject = (String) workItem.getParameter("Subject");
     String body = (String) workItem.getParameter("Body");
+    List<String> requestedDatasets = (List) workItem.getParameter("requestedDatasets");
 
     String message = "  ===========   MOCK EMAIL START (to be sent by system)  =============\n";
     message += "To: " + to + "\n";
@@ -24,7 +28,17 @@ public class EmailWorkitemHandler implements WorkItemHandler {
     message += "  =========== //  MOCK EMAIL END ====================\n";
 
     logger.info(message);
-    manager.completeWorkItem(workItem.getId(), new HashMap<String,Object>());
+
+    List<DatasetAccessRequest> dar = new ArrayList<>();
+    if (requestedDatasets != null && !requestedDatasets.isEmpty()) {
+      for (String requestedDataset : requestedDatasets) {
+        dar.add(new DatasetAccessRequest(requestedDataset));
+      }
+    }
+    Map<String, Object> results = new HashMap<>();
+    results.put("datasetAccessRequestList", dar);
+
+    manager.completeWorkItem(workItem.getId(), results);
   }
 
   @Override
