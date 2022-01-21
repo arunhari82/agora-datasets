@@ -30,7 +30,7 @@ when
   UseCaseRegistry( criticality < 60 )
   $dsr: DatasetAccessRequest( )
 then
-  log(drools, "Risky registry found, with criticality lower than 60, this is being auto-approved");
+  log(drools, "Safe registry found, with criticality lower than 60, this is being AUTO-approved");
   $dsr.setApproved(true);
   log(drools, "set datasetAccessRequest as " + $dsr);
 end
