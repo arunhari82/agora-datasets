@@ -29,6 +29,7 @@ public class RestWorkitemHandler implements WorkItemHandler {
     }
 
     UseCaseRegistry ucr = new UseCaseRegistry();
+    ucr.setCriticality(0);
     // risky clearence starts with 111
     if (globalClearenceNumber != null && globalClearenceNumber.startsWith("111")) {
       ucr.setName("Risky Use Case");
