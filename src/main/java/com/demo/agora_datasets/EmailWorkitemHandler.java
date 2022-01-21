@@ -29,15 +29,15 @@ public class EmailWorkitemHandler implements WorkItemHandler {
 
     logger.info(message);
 
-    List<DatasetAccessRequest> dar = new ArrayList<>();
+    Map<String, Object> results = new HashMap<>();
     if (requestedDatasets != null && !requestedDatasets.isEmpty()) {
+      List<DatasetAccessRequest> dar = new ArrayList<>();
       for (String requestedDataset : requestedDatasets) {
         dar.add(new DatasetAccessRequest(requestedDataset));
         logger.info("found a dataset access request with value: {}", requestedDataset);
       }
+      results.put("datasetAccessRequestList", dar);
     }
-    Map<String, Object> results = new HashMap<>();
-    results.put("datasetAccessRequestList", dar);
 
     manager.completeWorkItem(workItem.getId(), results);
   }
