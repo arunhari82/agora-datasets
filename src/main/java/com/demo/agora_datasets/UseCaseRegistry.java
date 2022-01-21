@@ -10,6 +10,7 @@ public class UseCaseRegistry implements java.io.Serializable {
 
 	private java.lang.String name;
 	private java.lang.Integer criticality;
+
 	public UseCaseRegistry() {
 	}
 
@@ -32,6 +33,42 @@ public class UseCaseRegistry implements java.io.Serializable {
 	public UseCaseRegistry(java.lang.String name, java.lang.Integer criticality) {
 		this.name = name;
 		this.criticality = criticality;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((criticality == null) ? 0 : criticality.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UseCaseRegistry other = (UseCaseRegistry) obj;
+		if (criticality == null) {
+			if (other.criticality != null)
+				return false;
+		} else if (!criticality.equals(other.criticality))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "UseCaseRegistry [criticality=" + criticality + ", name=" + name + "]";
 	}
 
 }

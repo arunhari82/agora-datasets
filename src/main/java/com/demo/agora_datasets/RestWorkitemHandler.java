@@ -50,6 +50,8 @@ public class RestWorkitemHandler implements WorkItemHandler {
       ucr.setCriticality(random.nextInt(100 - 1) + 1);
     }
 
+    logger.info("MOCK REGISTRY FOUND {}", ucr);
+
     List<DatasetAccessRequest> dar = new ArrayList<>();
     if(requestedDatasets != null && !requestedDatasets.isEmpty()) {
       for(String requestedDataset : requestedDatasets) {
