@@ -41,7 +41,7 @@ public class RestWorkitemHandler implements WorkItemHandler {
       ucr.setCriticality(100);
     }
 
-    if (ucr.getCriticality().equals(0)) {
+    if (ucr.getCriticality() == 0) {
       Random random = new Random();
       ucr.setCriticality(random.nextInt(100 - 1) + 1);
     }
