@@ -1,6 +1,8 @@
 package com.demo.agora_datasets;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
@@ -19,6 +21,7 @@ public class RestWorkitemHandler implements WorkItemHandler {
     String globalClearenceNumber = (String) workItem.getParameter("globalClearenceNumber");
     String eShareNumber = (String) workItem.getParameter("eShareNumber");
     String modelRegistryUseCaseId = (String) workItem.getParameter("modelRegistryUseCaseId");
+    List<String> requestedDatasets = (List) workItem.getParameter("requestedDatasets");
 
     logger.info("Running REST MOCK work item");
     if (modelRegistryUseCaseId != null) {
@@ -47,9 +50,17 @@ public class RestWorkitemHandler implements WorkItemHandler {
       ucr.setCriticality(random.nextInt(100 - 1) + 1);
     }
 
+    List<DatasetAccessRequest> dar = new ArrayList<>();
+    if(requestedDatasets != null && !requestedDatasets.isEmpty()) {
+      for(String requestedDataset : requestedDatasets) {
+        dar.add(new DatasetAccessRequest(requestedDataset));
+      }
+    }
+
     Map<String, Object> results = new HashMap<>();
     results.put("modelRegistryUseCaseId", UUID.randomUUID().toString());
     results.put("modelRegistry", ucr);
+    results.put("datasetAccessRequestList", dar);
 
     manager.completeWorkItem(workItem.getId(), results);
   }
