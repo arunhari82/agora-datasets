@@ -37,4 +37,40 @@ public class DatasetAccessRequest implements java.io.Serializable {
 		this.approved = approved;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((approved == null) ? 0 : approved.hashCode());
+		result = prime * result + ((datasetName == null) ? 0 : datasetName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DatasetAccessRequest other = (DatasetAccessRequest) obj;
+		if (approved == null) {
+			if (other.approved != null)
+				return false;
+		} else if (!approved.equals(other.approved))
+			return false;
+		if (datasetName == null) {
+			if (other.datasetName != null)
+				return false;
+		} else if (!datasetName.equals(other.datasetName))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "DatasetAccessRequest [approved=" + approved + ", datasetName=" + datasetName + "]";
+	}
+
 }
