@@ -24,7 +24,7 @@ public class RestWorkitemHandler implements WorkItemHandler {
     List<String> requestedDatasets = (List) workItem.getParameter("requestedDatasets");
 
     logger.info("Running REST MOCK work item");
-    if (modelRegistryUseCaseId != null) {
+    if (modelRegistryUseCaseId == null) {
       logger.info("Retrieving use case details for Global Clearance number {}", globalClearenceNumber);
       logger.info("Retrieving use cse details for eShare number {}", eShareNumber);
     } else {
