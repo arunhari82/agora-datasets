@@ -33,6 +33,7 @@ public class EmailWorkitemHandler implements WorkItemHandler {
     if (requestedDatasets != null && !requestedDatasets.isEmpty()) {
       for (String requestedDataset : requestedDatasets) {
         dar.add(new DatasetAccessRequest(requestedDataset));
+        logger.info("found a dataset access request with value: {}", requestedDataset);
       }
     }
     Map<String, Object> results = new HashMap<>();
