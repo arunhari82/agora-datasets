@@ -1,8 +1,6 @@
 package com.demo.agora_datasets;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
@@ -21,48 +19,40 @@ public class RestWorkitemHandler implements WorkItemHandler {
     String globalClearenceNumber = (String) workItem.getParameter("globalClearenceNumber");
     String eShareNumber = (String) workItem.getParameter("eShareNumber");
     String modelRegistryUseCaseId = (String) workItem.getParameter("modelRegistryUseCaseId");
-    List<String> requestedDatasets = (List) workItem.getParameter("requestedDatasets");
 
     logger.info("Running REST MOCK work item");
+    Map<String, Object> results = new HashMap<>();
     if (modelRegistryUseCaseId == null) {
       logger.info("Retrieving use case details for Global Clearance number {}", globalClearenceNumber);
       logger.info("Retrieving use cse details for eShare number {}", eShareNumber);
+      // About 70% of requests have a use case id
+      Random random = new Random();
+      int probability = random.nextInt(100 - 1) + 1;
+      boolean isRiskyClearance = globalClearenceNumber != null && globalClearenceNumber.startsWith("111");
+      boolean isRiskyEShare = eShareNumber != null && eShareNumber.startsWith("111");
+      if (probability > 70 || isRiskyClearance || isRiskyEShare) {
+        results.put("modelRegistryUseCaseId", UUID.randomUUID().toString());
+      } else {
+        results.put("modelRegistryUseCaseId", "RISK_" + UUID.randomUUID().toString());
+      }
     } else {
       logger.info("Retrieving use case details for use case id {}", modelRegistryUseCaseId);
-    }
 
-    UseCaseRegistry ucr = new UseCaseRegistry();
-    ucr.setCriticality(0);
-    // risky clearence starts with 111
-    if (globalClearenceNumber != null && globalClearenceNumber.startsWith("111")) {
-      ucr.setName("Risky Use Case");
-      ucr.setCriticality(100);
-    }
-
-    // risky eshare starts with 111
-    if (eShareNumber != null && eShareNumber.startsWith("111")) {
-      ucr.setName("Risky Use Case");
-      ucr.setCriticality(100);
-    }
-
-    if (ucr.getCriticality() == 0) {
-      Random random = new Random();
-      ucr.setCriticality(random.nextInt(100 - 1) + 1);
-    }
-
-    logger.info("MOCK REGISTRY FOUND {}", ucr);
-
-    List<DatasetAccessRequest> dar = new ArrayList<>();
-    if(requestedDatasets != null && !requestedDatasets.isEmpty()) {
-      for(String requestedDataset : requestedDatasets) {
-        dar.add(new DatasetAccessRequest(requestedDataset));
+      UseCaseRegistry ucr = new UseCaseRegistry();
+      ucr.setCriticality(0);
+      // risky clearence starts with 111
+      if (modelRegistryUseCaseId.startsWith("RISK")) {
+        ucr.setName("Risky Use Case");
+        ucr.setCriticality(100);
+      } else {
+        ucr.setName(modelRegistryUseCaseId);
+        Random random = new Random();
+        ucr.setCriticality(random.nextInt(100 - 1) + 1);
       }
-    }
 
-    Map<String, Object> results = new HashMap<>();
-    results.put("modelRegistryUseCaseId", UUID.randomUUID().toString());
-    results.put("modelRegistry", ucr);
-    results.put("datasetAccessRequestList", dar);
+      logger.info("MOCK REGISTRY FOUND {}", ucr);
+      results.put("modelRegistry", ucr);
+    }
 
     manager.completeWorkItem(workItem.getId(), results);
   }
