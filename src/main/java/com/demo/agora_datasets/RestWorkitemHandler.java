@@ -48,7 +48,7 @@ public class RestWorkitemHandler implements WorkItemHandler {
     }
 
     Map<String, Object> results = new HashMap<>();
-    results.put("modelRegistryUseCaseId", UUID.randomUUID());
+    results.put("modelRegistryUseCaseId", UUID.randomUUID().toString());
     results.put("modelRegistry", ucr);
 
     manager.completeWorkItem(workItem.getId(), results);
