@@ -15,6 +15,11 @@ public class DatasetAccessRequest implements java.io.Serializable {
 	public DatasetAccessRequest() {
 	}
 
+	public DatasetAccessRequest(String datasetName) {
+		this.datasetName = datasetName;
+		approved = false;
+	}
+
 	public java.lang.String getDatasetName() {
 		return this.datasetName;
 	}
