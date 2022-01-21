@@ -10,7 +10,7 @@ when
 then
   log(drools, "No Use Case Registry found, this can't be auto-approved");
   $dsr.setApproved(false);
-  log(drools, "set datasetAccessRequest as " + $dsr)
+  log(drools, "set datasetAccessRequest as " + $dsr);
 end
 
 rule "Risky Registry"
@@ -21,7 +21,7 @@ when
 then
   log(drools, "Risky registry found, with criticality higher/equal than 60, this can't be auto-approved");
   $dsr.setApproved(false);
-  log(drools, "set datasetAccessRequest as " + $dsr)
+  log(drools, "set datasetAccessRequest as " + $dsr);
 end
 
 rule "Safe Registry"
@@ -32,5 +32,5 @@ when
 then
   log(drools, "Risky registry found, with criticality lower than 60, this is being auto-approved");
   $dsr.setApproved(true);
-  log(drools, "set datasetAccessRequest as " + $dsr)
+  log(drools, "set datasetAccessRequest as " + $dsr);
 end
