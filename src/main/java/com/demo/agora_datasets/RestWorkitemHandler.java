@@ -31,10 +31,11 @@ public class RestWorkitemHandler implements WorkItemHandler {
       boolean isRiskyClearance = globalClearenceNumber != null && globalClearenceNumber.startsWith("111");
       boolean isRiskyEShare = eShareNumber != null && eShareNumber.startsWith("111");
       if (probability > 70 || isRiskyClearance || isRiskyEShare) {
-        results.put("modelRegistryUseCaseId", UUID.randomUUID().toString());
-      } else {
-        logger.info("Adding RISKY DATASET, because probability {}, clearance risky {}, and eShare risky {}", probability, isRiskyClearance, isRiskyEShare);
+        logger.info("Adding RISKY DATASET, because probability {}, clearance risky {}, and eShare risky {}",
+            probability, isRiskyClearance, isRiskyEShare);
         results.put("modelRegistryUseCaseId", "RISK_" + UUID.randomUUID().toString());
+      } else {
+        results.put("modelRegistryUseCaseId", UUID.randomUUID().toString());
       }
     } else {
       logger.info("Retrieving use case details for use case id {}", modelRegistryUseCaseId);
