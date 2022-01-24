@@ -9,9 +9,9 @@
   <name>agora-datasets</name>
   <description></description>
   <properties>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <java.version>8</java.version>
     <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
   <dependencies>
     <dependency>
@@ -55,6 +55,12 @@
       <artifactId>xstream</artifactId>
       <version>1.4.16.redhat-00001</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.redhat.app</groupId>
+      <artifactId>Slack</artifactId>
+      <version>3.0.0-SNAPSHOT</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
   <build>
