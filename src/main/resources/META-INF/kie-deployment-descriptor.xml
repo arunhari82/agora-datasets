@@ -13,13 +13,13 @@
         <work-item-handler>
             <resolver>mvel</resolver>
             <identifier>new com.demo.agora_datasets.EmailWorkitemHandler()</identifier>
-            <parameters />
+            <parameters/>
             <name>Email</name>
         </work-item-handler>
         <work-item-handler>
             <resolver>mvel</resolver>
             <identifier>new com.demo.agora_datasets.RestWorkitemHandler()</identifier>
-            <parameters />
+            <parameters/>
             <name>Rest</name>
         </work-item-handler>
     </work-item-handlers>
