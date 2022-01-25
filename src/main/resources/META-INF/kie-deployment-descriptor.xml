@@ -28,6 +28,12 @@
             <parameters/>
             <name>Slack</name>
         </work-item-handler>
+        <work-item-handler>
+            <resolver>mvel</resolver>
+            <identifier>new com.redhat.app.SlackWorkItemHandler("")</identifier>
+            <parameters/>
+            <name>SlackPostMessage</name>
+        </work-item-handler>
     </work-item-handlers>
     <environment-entries/>
     <configurations/>
