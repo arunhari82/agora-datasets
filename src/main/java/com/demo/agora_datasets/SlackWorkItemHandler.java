@@ -37,7 +37,7 @@ import org.slf4j.LoggerFactory;
         serviceInfo = @WidService(category = "${name}", description = "${description}",
                 keywords = "slack,message,send,channel",
                 action = @WidAction(title = "Send message to a slack channel"),
-                authinfo = @WidAuth(required = true, params = {"accessToken"},
+                authinfo = @WidAuth(required = false, params = {"accessToken"},
                         paramsdescription = {"Slack access token"},
                         referencesite = "https://api.slack.com/tokens")
         )
@@ -50,7 +50,9 @@ public class SlackWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
         private Slack slack = Slack.getInstance();
 
         public SlackWorkItemHandler(String accessToken){
-            this.accessToken = accessToken;        
+            this.accessToken = accessToken;  
+            // Get the token from System Property slackAccessToken
+            this.accessToken = System.getProperty("slackAccessToken");
         }       
         
         private String SendMessage(String channel, String message) {
