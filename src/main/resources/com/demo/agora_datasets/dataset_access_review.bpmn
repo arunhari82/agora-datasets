@@ -39,7 +39,6 @@
       </bpmn2:extensionElements>
       <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="_p3-E8X2EEey5RLDkDYaTjA" language="http://www.java.com/java"><![CDATA[return !KieFunctions.isNull(globalClearenceNumber) || !KieFunctions.isNull(eShareNumber);]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="_E7551C67-E158-4453-A57C-C2C048155885" sourceRef="_C17464EA-F25B-45EA-830D-83B74B1E194C" targetRef="_39AB1B0B-9031-429D-B8C6-FB8330B3711D"/>
     <bpmn2:sequenceFlow id="_EE34411F-8C2E-453C-9A97-EF359DF92C32" name="Yes" sourceRef="_B8BE4CC5-F019-478D-BDC5-50615AF42EE0" targetRef="_B492A44E-F192-47D3-8BB3-4136E223C431">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
@@ -191,7 +190,7 @@
           <drools:metaValue><![CDATA[GC or eShare?]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:incoming>_E7551C67-E158-4453-A57C-C2C048155885</bpmn2:incoming>
+      <bpmn2:incoming>_5E2FB536-A395-4995-977D-8AACA9257C09</bpmn2:incoming>
       <bpmn2:outgoing>_C163DBF0-7D93-4018-9A79-8383ED86C468</bpmn2:outgoing>
       <bpmn2:outgoing>_5608BBBB-926A-40E4-AB3C-E7872B01ECE1</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
@@ -343,10 +342,6 @@
       <bpmndi:BPMNEdge id="edge_shape__B8BE4CC5-F019-478D-BDC5-50615AF42EE0_to_shape__B492A44E-F192-47D3-8BB3-4136E223C431" bpmnElement="_EE34411F-8C2E-453C-9A97-EF359DF92C32">
         <di:waypoint xsi:type="dc:Point" x="970.0" y="271.0"/>
         <di:waypoint xsi:type="dc:Point" x="1050.0" y="271.0"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape__C17464EA-F25B-45EA-830D-83B74B1E194C_to_shape__39AB1B0B-9031-429D-B8C6-FB8330B3711D" bpmnElement="_E7551C67-E158-4453-A57C-C2C048155885">
-        <di:waypoint xsi:type="dc:Point" x="464.0" y="271.0"/>
-        <di:waypoint xsi:type="dc:Point" x="544.0" y="271.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape__39AB1B0B-9031-429D-B8C6-FB8330B3711D_to_shape__E75EB697-729D-475E-B320-865B1AF012EC" bpmnElement="_5608BBBB-926A-40E4-AB3C-E7872B01ECE1">
         <di:waypoint xsi:type="dc:Point" x="572.0" y="271.0"/>

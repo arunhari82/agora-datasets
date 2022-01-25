@@ -1,0 +1,19 @@
+[
+        [
+            "name" : "SlackPostMessage",
+            "displayName" : "SlackPostMessage",
+            "category" : "Slack",
+            "description" : "",
+            "defaultHandler" : "mvel: new com.demo.agora_datasets.SlackWorkItemHandler()",
+            "documentation" : "Slack/index.html",
+
+            "parameters" : [
+                                "channelName" : new StringDataType()
+                              ,"message" : new StringDataType()
+
+            ],
+            "icon" : "SlackPostMessage.png"
+
+        ]
+
+]
