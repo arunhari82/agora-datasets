@@ -40,5 +40,13 @@
         <source>PROJECT</source>
       </metadata>
     </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>jboss-earlyaccess-repository</id>
+        <url>https://maven.repository.redhat.com/earlyaccess/all/</url>
+        <source>SETTINGS</source>
+      </metadata>
+    </repository>
   </repositories>
 </project-repositories>
