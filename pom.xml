@@ -58,9 +58,9 @@
     </dependency>
     <dependency>
       <groupId>com.github.seratch</groupId>
-      <artifactId>jslack</artifactId>
+      <artifactId>jslack-api-client</artifactId>
       <version>3.4.2</version>
-    </dependency>
+   </dependency>
     <dependency>
       <groupId>org.kie</groupId>
       <artifactId>kie-api</artifactId>
