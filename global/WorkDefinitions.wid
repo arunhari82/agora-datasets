@@ -139,8 +139,8 @@
         "icon" : "icon.png",
 
         "parameters" : [
-            "KieSessionName" : new StringDataType(),
-            "KieSessionType" : new StringDataType()
+            "channelName" : new StringDataType(),
+            "message" : new StringDataType()
         ]
     ],
 
