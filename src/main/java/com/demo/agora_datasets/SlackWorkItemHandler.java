@@ -49,10 +49,13 @@ public class SlackWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
         private String accessToken;
         private Slack slack = Slack.getInstance();
 
+        public SlackWorkItemHandler()
+        {
+            this.accessToken = System.getProperty("slackAccessToken");
+        }
+
         public SlackWorkItemHandler(String accessToken){
             this.accessToken = accessToken;  
-            // Get the token from System Property slackAccessToken
-            this.accessToken = System.getProperty("slackAccessToken");
         }       
         
         private String SendMessage(String channel, String message) {
