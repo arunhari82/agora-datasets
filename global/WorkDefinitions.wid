@@ -128,5 +128,20 @@
         "parameters" : [
             "Condition" : new StringDataType()
         ]
-    ]
+    ],
+    [
+        "name" : "Slack",
+        "displayName" : "SlackPostMessage",
+        "category" : "Slack",
+        "description" : "Send message to Slack Channel",
+        "defaultHandler" : "mvel: new com.demo.agora_datasets.SlackWorkItemHandler()",
+        "documentation" : "jbpm-workitems-bpmn2/index.html",
+        "icon" : "icon.png",
+
+        "parameters" : [
+            "KieSessionName" : new StringDataType(),
+            "KieSessionType" : new StringDataType()
+        ]
+    ],
+
 ]
