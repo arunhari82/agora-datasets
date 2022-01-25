@@ -1,8 +1,10 @@
 package com.demo.agora_datasets;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+
 import org.jbpm.process.workitem.core.AbstractLogOrThrowWorkItemHandler;
 import org.jbpm.process.workitem.core.util.RequiredParameterValidator;
 import org.kie.api.runtime.process.WorkItem;
@@ -15,8 +17,8 @@ import org.jbpm.process.workitem.core.util.service.WidAuth;
 import org.jbpm.process.workitem.core.util.service.WidService;
 import org.jbpm.process.workitem.core.util.WidMavenDepends;
 
-import com.github.seratch.jslack.Slack;
-import com.github.seratch.jslack.api.methods.response.chat.ChatPostMessageResponse;
+import com.google.gson.JsonObject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,28 +49,31 @@ import org.slf4j.LoggerFactory;
 public class SlackWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
         private static final Logger logger = LoggerFactory.getLogger(SlackWorkItemHandler.class);
         private String accessToken;
-        private Slack slack = Slack.getInstance();
-
+        
         public SlackWorkItemHandler()
         {
             this.accessToken = System.getProperty("slackAccessToken");
+            logger.info("*** using slack token **** " + this.accessToken);
         }
 
-        public SlackWorkItemHandler(String accessToken){
-            this.accessToken = accessToken;  
-        }       
-        
-        private String SendMessage(String channel, String message) {
-           try {	
-	        	ChatPostMessageResponse response = slack.methods(accessToken).chatPostMessage(req -> req
-	        			  .channel(channel)
-	        			  .text(message));
-	        	return (response.isOk() ? response.getMessage().getText() : response.getError());
-		   } catch (Exception e) {
-				e.printStackTrace();
-				return e.getMessage();
-		   }  
+       private void sendSlackMessage(String message) {
+           try 
+           {
+           String url = "https://hooks.slack.com/services/" + this.accessToken;
+           CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+           HttpPost request = new HttpPost(url);
+           request.addHeader("content-type","application/json");
+            JsonObject json = new JsonObject();
+            json.addProperty("text", message);
+            StringEntity entity = new StringEntity(json.toString());
+            request.setEntity(entity);
+            httpClient.execute(request);
+           }catch(Exception e)
+           {
+                   e.printStackTrace();;
+           }   
        }
+
         
 
 
@@ -84,11 +89,7 @@ public class SlackWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
             // complete workitem impl...
                         
             // return results
-            String sampleResult = this.SendMessage(channelName, message);
-            Map<String, Object> results = new HashMap<String, Object>();
-            results.put("Result", sampleResult);
-
-
+            this.sendSlackMessage(message);
             manager.completeWorkItem(workItem.getId(), null);
         } catch(Throwable cause) {
             handleException(cause);
