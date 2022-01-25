@@ -6,13 +6,13 @@
             "description" : "",
             "defaultHandler" : "mvel: new com.demo.agora_datasets.SlackWorkItemHandler()",
             "documentation" : "Slack/index.html",
-
+            "icon" : "SlackPostMessage.png",
             "parameters" : [
                                 "channelName" : new StringDataType()
                               ,"message" : new StringDataType()
 
             ]
-            "icon" : "SlackPostMessage.png"
+            
 
     ],
     [
