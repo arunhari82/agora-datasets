@@ -1,28 +1,12 @@
 [
     [
-            "name" : "SlackPostMessage",
-            "displayName" : "SlackPostMessage",
-            "category" : "Slack",
-            "description" : "",
-            "defaultHandler" : "mvel: new com.demo.agora_datasets.SlackWorkItemHandler()",
-            "documentation" : "Slack/index.html",
-
-            "parameters" : [
-                                "channelName" : new StringDataType()
-                              ,"message" : new StringDataType()
-
-            ]
-            "icon" : "SlackPostMessage.png"
-
-    ], 
-    [
         "name" : "BusinessRuleTask",
         "displayName" : "BusinessRuleTask",
         "category" : "jbpm-workitems-bpmn2",
         "description" : "",
         "defaultHandler" : "mvel: new org.jbpm.process.workitem.bpmn2.BusinessRuleTaskHandler()",
         "documentation" : "jbpm-workitems-bpmn2/index.html",
-        "icon" : "defaultbusinessruletaskicon.png",
+        "icon" : "BusinessRuleTask.png",
 
         "parameters" : [
             "KieSessionName" : new StringDataType(),
@@ -37,7 +21,7 @@
         "description" : "",
         "defaultHandler" : "mvel: new org.jbpm.process.workitem.bpmn2.DecisionTaskHandler()",
         "documentation" : "jbpm-workitems-bpmn2/index.html",
-        "icon" : "defaultdecisiontaskicon.png",
+        "icon" : "DecisionTask.png",
 
         "parameters" : [
             "Model" : new StringDataType(),
@@ -53,7 +37,7 @@
         "description" : "",
         "defaultHandler" : "mvel: new org.jbpm.process.workitem.email.EmailWorkItemHandler()",
         "documentation" : "jbpm-workitems-email/index.html",
-        "icon" : "defaultemailicon.png",
+        "icon" : "Email.png",
 
         "parameters" : [
             "Reply-To" : new StringDataType(),
@@ -76,7 +60,7 @@
         "description" : "",
         "defaultHandler" : "mvel: new org.jbpm.process.workitem.rest.RESTWorkItemHandler()",
         "documentation" : "jbpm-workitems-rest/index.html",
-        "icon" : "defaultresticon.png",
+        "icon" : "Rest.png",
 
         "parameters" : [
             "ConnectTimeout" : new StringDataType(),
@@ -109,7 +93,7 @@
         "description" : "",
         "defaultHandler" : "mvel: new org.jbpm.process.workitem.webservice.WebServiceWorkItemHandler()",
         "documentation" : "jbpm-workitems-webservice/index.html",
-        "icon" : "defaultwebserviceicon.png",
+        "icon" : "WebService.png",
 
         "parameters" : [
             "Endpoint" : new StringDataType(),
@@ -128,7 +112,7 @@
     [
         "name" : "Log",
         "displayName" : "Log",
-        "icon" : "defaultlogicon.png",
+        "icon" : "defaultlogicon.gif",
 
         "parameters" : [
           "Message" : new StringDataType()
@@ -144,7 +128,5 @@
         "parameters" : [
             "Condition" : new StringDataType()
         ]
-    ],
-    
-
+    ]
 ]
