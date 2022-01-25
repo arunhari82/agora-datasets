@@ -4,18 +4,14 @@
             "displayName" : "SlackPostMessage",
             "category" : "Slack",
             "description" : "",
-            "defaultHandler" : "mvel: new com.redhat.app.SlackWorkItemHandler()",
+            "defaultHandler" : "mvel: new com.demo.agora_datasets.SlackWorkItemHandler()",
             "documentation" : "Slack/index.html",
 
             "parameters" : [
                                 "channelName" : new StringDataType()
-                ,"message" : new StringDataType()
+                              ,"message" : new StringDataType()
 
-            ],
-            "mavenDependencies" : [
-                                 "com.redhat.app:Slack:3.0.0-SNAPSHOT"
-
-            ],
+            ]
             "icon" : "SlackPostMessage.png"
 
         ]
