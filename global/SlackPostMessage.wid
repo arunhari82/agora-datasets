@@ -11,7 +11,7 @@
                                 "channelName" : new StringDataType()
                               ,"message" : new StringDataType()
 
-            ]
+            ],
             "icon" : "SlackPostMessage.png"
 
         ]
